@@ -8,4 +8,7 @@ Multi module template for Spring Boot 2.0
 ```
 Request url: http://localhost:8080/
 
+### Reference
+- https://spring.io/guides/gs/multi-module/
+
 
