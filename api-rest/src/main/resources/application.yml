@@ -1,0 +1,34 @@
+spring.profiles.active: local
+
+server.servlet.context-path: /api
+
+---
+
+spring:
+  profiles: local
+
+server:
+  port: 8080
+
+service.message: Hello World
+
+---
+
+spring:
+  profiles: dev
+
+server:
+  port: 8080
+
+service.message: Hello World
+
+---
+
+spring:
+  profiles: prod
+
+server:
+  port: 8080
+
+service.message: Hello World
+

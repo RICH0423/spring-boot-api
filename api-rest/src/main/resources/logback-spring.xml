@@ -1,0 +1,59 @@
+<configuration>
+
+	<springProfile name="prod">
+		<property name="LOG_HOME" value="/usr/local/api/log" />
+	</springProfile>
+
+	<springProfile name="dev">
+		<property name="LOG_HOME" value="/usr/local/api/log" />
+	</springProfile>
+	
+	<springProfile name="local">
+        <property name="LOG_HOME" value="/Users/rich/rich_sd/log" />
+    </springProfile>
+
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="JavaFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/api.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_HOME}/api.log.%d{yyyy-MM-dd}.%i
+			</fileNamePattern>
+
+			<!-- keep 180 days' worth of history -->
+			<maxHistory>180</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg %n
+			</Pattern>
+		</encoder>
+
+		<append>true</append>
+		<prudent>false</prudent>
+	</appender>
+
+	<!--<logger name="org.springframework.data.mongodb.core" level="WARN">-->
+		<!--<appender-ref ref="STDOUT" />-->
+	<!--</logger>-->
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="JavaFileAppender" />
+	</root>
+</configuration>

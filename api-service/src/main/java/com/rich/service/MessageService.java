@@ -16,4 +16,8 @@ public class MessageService {
     public String message() {
         return this.serviceProperties.getMessage();
     }
+
+    public String createMsg(String msg) {
+        return "created " + msg;
+    }
 }
