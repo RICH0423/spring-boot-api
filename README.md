@@ -1,5 +1,5 @@
 # spring-boot-api
-Multi module template for Spring Boot 2.0
+Multi module template for Spring Boot 2.0 with Spring Cloud Zuul
 
 ### Build and run application
 
