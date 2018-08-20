@@ -37,11 +37,11 @@ public class LogAspect {
 	}
 
 	private void showClientInfo(JoinPoint joinPoint, HttpServletRequest request) {
-		log.info( "Url: {}", request.getRequestURL().toString());
-		log.info( "HTTP_METHOD: {}", request.getMethod());
-		log.info( "IP: {}", request.getRemoteAddr());
-		log.info( "CLASS_METHOD: {}", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-		log.info( "Args: {}", Arrays.toString(joinPoint.getArgs()));
+		log.info("Url: {}", request.getRequestURL().toString());
+		log.info("HTTP_METHOD: {}", request.getMethod());
+		log.info("IP: {}", request.getRemoteAddr());
+		log.info("CLASS_METHOD: {}", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+		log.info("Args: {}", Arrays.toString(joinPoint.getArgs()));
 	}
 
 	@After("log()")

@@ -19,7 +19,7 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getMessage() {
         return messageService.message();
     }
