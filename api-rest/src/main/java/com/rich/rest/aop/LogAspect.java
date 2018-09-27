@@ -17,7 +17,6 @@ import java.util.Arrays;
 @Component
 public class LogAspect {
 
-	// pointCut
 	@Pointcut("@annotation(com.rich.rest.aop.LogAction)")
 	public void log() {}
 
@@ -28,6 +27,7 @@ public class LogAspect {
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
 		showClientInfo(joinPoint, request);
+		showArgsInfo(joinPoint);
 
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
@@ -42,6 +42,15 @@ public class LogAspect {
 		log.info("IP: {}", request.getRemoteAddr());
 		log.info("CLASS_METHOD: {}", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
 		log.info("Args: {}", Arrays.toString(joinPoint.getArgs()));
+	}
+
+	private void showArgsInfo(JoinPoint joinPoint) {
+		Object[] agrsArray = joinPoint.getArgs();
+		Object argResult = new Object();
+		if(agrsArray.length > 0) {
+			argResult = agrsArray[0];
+		}
+		log.info("First arg: {}", argResult.toString());
 	}
 
 	@After("log()")

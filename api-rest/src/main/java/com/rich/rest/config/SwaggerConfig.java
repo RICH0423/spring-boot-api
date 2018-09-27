@@ -32,7 +32,7 @@ public class SwaggerConfig {
     }
     
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("D-Bee REST API")
+        return new ApiInfoBuilder().title("REST API")
                 .description("The REST API for demo").termsOfServiceUrl("")
                 .contact(new Contact("RICH LEE", "", "rich04230@gmail.com"))
                 .license("Apache License Version 2.0")
